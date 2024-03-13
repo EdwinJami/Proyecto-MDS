@@ -19,16 +19,73 @@ root.resizable(False, False)
 header = Label(root, text='Gestión de eventos escolares de la Unidad Educativa "Lev Vygotsky"', bg='#fff', fg='#333', font=('Arial', 20, 'bold'))
 header.pack(pady=20, padx=20)
 def crear_perfil():
-    perfil_info = "Estudiante: Patrick J.M\nID: 157986354\nGrado: 1 Bachillerato\nPromo:2022-2023"
+    # Información predeterminada del perfil
+    nombre_predeterminado = "Patrick J.M"
+    id_predeterminado = "157986354"
+    grado_predeterminado = "1 Bachillerato"
+    promo_predeterminado = "2022-2023"
+
+    # Función para guardar cambios
+    def guardar_cambios():
+        nonlocal nombre_predeterminado, id_predeterminado, grado_predeterminado, promo_predeterminado
+
+        # Obtener valores actualizados de los campos de entrada
+        nombre_actualizado = nombre_entry.get()
+        id_actualizado = id_entry.get()
+        grado_actualizado = grado_entry.get()
+        promo_actualizado = promo_entry.get()
+
+        # Actualizar valores predeterminados con los nuevos
+        nombre_predeterminado = nombre_actualizado if nombre_actualizado else nombre_predeterminado
+        id_predeterminado = id_actualizado if id_actualizado else id_predeterminado
+        grado_predeterminado = grado_actualizado if grado_actualizado else grado_predeterminado
+        promo_predeterminado = promo_actualizado if promo_actualizado else promo_predeterminado
+
+        # Actualizar etiqueta de información del perfil
+        perfil_info = f"Estudiante: {nombre_predeterminado}\nID: {id_predeterminado}\nGrado: {grado_predeterminado}\nPromo: {promo_predeterminado}"
+        perfil_label.config(text=perfil_info)
+
     profile_window = Toplevel(root)
     profile_window.title("Perfil")
-    profile_window.geometry('300x200')
+    profile_window.geometry('300x250')
 
+    # Etiquetas y campos de entrada para actualizar la información del perfil
+    nombre_label = Label(profile_window, text="Nombre:")
+    nombre_label.grid(row=0, column=0, padx=10, pady=5, sticky="w")
+    nombre_entry = Entry(profile_window)
+    nombre_entry.grid(row=0, column=1, padx=10, pady=5)
+    nombre_entry.insert(0, nombre_predeterminado)
+
+    id_label = Label(profile_window, text="ID:")
+    id_label.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+    id_entry = Entry(profile_window)
+    id_entry.grid(row=1, column=1, padx=10, pady=5)
+    id_entry.insert(0, id_predeterminado)
+
+    grado_label = Label(profile_window, text="Grado:")
+    grado_label.grid(row=2, column=0, padx=10, pady=5, sticky="w")
+    grado_entry = Entry(profile_window)
+    grado_entry.grid(row=2, column=1, padx=10, pady=5)
+    grado_entry.insert(0, grado_predeterminado)
+
+    promo_label = Label(profile_window, text="Promo:")
+    promo_label.grid(row=3, column=0, padx=10, pady=5, sticky="w")
+    promo_entry = Entry(profile_window)
+    promo_entry.grid(row=3, column=1, padx=10, pady=5)
+    promo_entry.insert(0, promo_predeterminado)
+
+    # Botón para guardar cambios
+    btn_guardar = Button(profile_window, text="Guardar Cambios", command=guardar_cambios)
+    btn_guardar.grid(row=4, columnspan=2, padx=10, pady=10)
+
+    # Mostrar información predeterminada del perfil
+    perfil_info = f"Estudiante: {nombre_predeterminado}\nID: {id_predeterminado}\nGrado: {grado_predeterminado}\nPromo: {promo_predeterminado}"
     perfil_label = Label(profile_window, text=perfil_info)
-    perfil_label.pack(pady=10)
+    perfil_label.grid(row=5, columnspan=2, padx=10, pady=10)
 
+    # Botón para cerrar la ventana del perfil
     btn_regresar = Button(profile_window, text="Regresar", command=profile_window.destroy)
-    btn_regresar.pack(pady=10)
+    btn_regresar.grid(row=6, columnspan=2, padx=10, pady=10)
 
 def creacion_edicion():
     def guardar_tarea():
