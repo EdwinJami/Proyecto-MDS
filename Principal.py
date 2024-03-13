@@ -33,7 +33,24 @@ def creacion_edicion():
     messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
 
 def foro():
-    messagebox.showinfo("Foro", "Funcionalidad en desarrollo")
+    def publicar_mensaje():
+        mensaje = entry.get("1.0", "end-1c")
+        messagebox.showinfo("Mensaje publicado", f"Mensaje publicado en el foro:\n\n{mensaje}")
+        ventana_foro.destroy()
+
+    ventana_foro = Toplevel(root)
+    ventana_foro.title("Foro")
+    ventana_foro.geometry("400x300")
+
+    etiqueta = Label(ventana_foro, text="Publicar mensaje en el foro:", font=("Arial", 12))
+    etiqueta.pack(pady=10)
+
+    entry = Text(ventana_foro, height=10, width=50)
+    entry.pack(pady=10)
+
+    boton = Button(ventana_foro, text="Publicar", command=publicar_mensaje)
+    boton.pack(pady=10)
+
 
 def salir():
     messagebox.showinfo("Salir", "Gracias por usar nuestro programa")
