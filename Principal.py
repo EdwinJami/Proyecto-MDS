@@ -18,19 +18,22 @@ root.resizable(False, False)
 header = Label(root, text='Gestión de eventos escolares de la Unidad Educativa "Lev Vygotsky"', bg='#fff', fg='#333', font=('Arial', 20, 'bold'))
 header.pack(pady=20, padx=20)
 
-def crear_tareas():
+def crear_perfil():
     messagebox.showinfo("Perfil", "Funcionalidad en desarrollo")
 
-def colaborar_compartir():
+def calendario():
     messagebox.showinfo("Calendario", "Funcionalidad en desarrollo")
 
-def seguimiento_proceso():
+def creacion_edicion():
     messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
 
-def importar_exportar():
+def foro():
     messagebox.showinfo("Foro", "Funcionalidad en desarrollo")
 
-
+def calendario():
+    top = Toplevel(root)
+    cal = Calendar(top, font="Arial 14", selectmode='day', cursor="hand1", year=2024, month=3, day=13)
+    cal.pack(fill="both", expand=True)
 def signin():
     username=user.get()
     password=code.get()
@@ -44,16 +47,21 @@ def signin():
         frame = Frame(screen, width=350, height=350, bg="white")
         frame.place(x=50, y=90)
 
-        btn_tareas = Button(frame, text="Perfil", command=crear_tareas)
+        titulo = Label(frame, text='Gestión de eventos escolares de la Unidad Educativa "Lev Vygotsky"',
+                       font=('Arial', 25, 'bold'))
+        titulo.pack(pady=30)
+        titulo.pack(anchor='n')
+
+        btn_tareas = Button(frame, text="Perfil", command=crear_perfil)
         btn_tareas.pack(pady=10)
 
-        btn_colaboracion = Button(frame, text="Calendario", command=colaborar_compartir)
+        btn_colaboracion = Button(frame, text="Calendario", command=calendario)
         btn_colaboracion.pack(pady=10)
 
-        btn_seguimiento = Button(frame, text="Creación y edición de tareas", command=seguimiento_proceso)
+        btn_seguimiento = Button(frame, text="Creación y edición de tareas", command=creacion_edicion)
         btn_seguimiento.pack(pady=10)
 
-        btn_import_export = Button(frame, text="Foro", command=importar_exportar)
+        btn_import_export = Button(frame, text="Foro", command=foro)
         btn_import_export.pack(pady=10)
 
     elif username != 'admin' and password != '1234':
