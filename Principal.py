@@ -144,10 +144,11 @@ def creacion_edicion():
     button_frame.pack(pady=10)
 
     btn_guardar = Button(button_frame, text="Guardar Tarea", command=guardar_tarea)
-    btn_guardar.pack(side=LEFT, padx=10)  # Alinear el botón a la izquierda
+    btn_guardar.pack(side=LEFT, padx=10)
 
     btn_ver_tareas = Button(button_frame, text="Ver Tareas", command=ver_tareas)
-    btn_ver_tareas.pack(side=LEFT, padx=10)  # Alinear el botón a la izquierda
+    btn_ver_tareas.pack(side=LEFT, padx=10)
+
 def foro():
     def publicar_mensaje():
         mensaje = entry.get("1.0", "end-1c")
