@@ -2,9 +2,11 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import PhotoImage
 from tkinter import PhotoImage
-import sys
-sys.path.append('/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages')
-from tkcalendar import Calendar
+
+#Esto se debe borrar ya que es la ruta del calendar en propia, o instalar cada direccion
+import sys #1
+sys.path.append('/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages') #2
+from tkcalendar import Calendar #3
 
 root = Tk()
 root.title('Login')
