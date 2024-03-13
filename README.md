@@ -1,2 +1,2 @@
 # Proyecto-MDS
-Trabajo en equipo
+Sistema de Gestion de Eventos
