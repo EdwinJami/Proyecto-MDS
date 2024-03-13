@@ -18,7 +18,16 @@ root.resizable(False, False)
 header = Label(root, text='Gestión de eventos escolares de la Unidad Educativa "Lev Vygotsky"', bg='#fff', fg='#333', font=('Arial', 20, 'bold'))
 header.pack(pady=20, padx=20)
 def crear_perfil():
-    messagebox.showinfo("Perfil", "Funcionalidad en desarrollo")
+    perfil_info = "Estudiante: Patrick J.M\nID: 157986354\nGrado: 1 Bachillerato\nPromo:2022-2023"
+    profile_window = Toplevel(root)
+    profile_window.title("Perfil")
+    profile_window.geometry('300x200')
+
+    perfil_label = Label(profile_window, text=perfil_info)
+    perfil_label.pack(pady=10)
+
+    btn_regresar = Button(profile_window, text="Regresar", command=profile_window.destroy)
+    btn_regresar.pack(pady=10)
 
 def creacion_edicion():
     messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
