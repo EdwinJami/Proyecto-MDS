@@ -19,16 +19,17 @@ header = Label(root, text='Gestión de eventos escolares de la Unidad Educativa 
 header.pack(pady=20, padx=20)
 
 def crear_tareas():
-    messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
+    messagebox.showinfo("Perfil", "Funcionalidad en desarrollo")
 
 def colaborar_compartir():
-    messagebox.showinfo("Colaboración y compartir", "Funcionalidad en desarrollo")
+    messagebox.showinfo("Calendario", "Funcionalidad en desarrollo")
 
 def seguimiento_proceso():
-    messagebox.showinfo("Seguimiento del proceso", "Funcionalidad en desarrollo")
+    messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
 
 def importar_exportar():
-    messagebox.showinfo("Importar y exportar datos", "Funcionalidad en desarrollo")
+    messagebox.showinfo("Foro", "Funcionalidad en desarrollo")
+
 
 def signin():
     username=user.get()
@@ -110,9 +111,5 @@ label.place(x=75, y=270)
 
 sign_up = Button(frame, width=6, text='Sign up', border=0, bg='white', cursor='hand2', fg='#57a1f8')
 sign_up.place(x=215, y=270)
-
-
-#######
-print("Hola")
 
 root.mainloop()
