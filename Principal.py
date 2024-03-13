@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import PhotoImage
 from tkinter import PhotoImage
+from tkcalendar import DateEntry
 
 #Esto se debe borrar ya que es la ruta del calendar en propia, o instalar cada direccion
 import sys #1
@@ -30,8 +31,38 @@ def crear_perfil():
     btn_regresar.pack(pady=10)
 
 def creacion_edicion():
-    messagebox.showinfo("Creación y edición de tareas", "Funcionalidad en desarrollo")
+    def guardar_tarea():
+        descripcion = entry_descripcion.get()
+        fecha_vencimiento = entry_fecha.get_date()
+        prioridad = entry_prioridad.get()
 
+        tarea_info = f"Descripción: {descripcion}\nFecha de vencimiento: {fecha_vencimiento.strftime('%d/%m/%Y')}\nPrioridad: {prioridad}"
+        messagebox.showinfo("Tarea Guardada", tarea_info)
+
+    tarea_window = Toplevel(root)
+    tarea_window.title("Creación y Edición de Tareas")
+    tarea_window.geometry('400x300')
+
+    label_descripcion = Label(tarea_window, text="Descripción:")
+    label_descripcion.pack(pady=10)
+    entry_descripcion = Entry(tarea_window)
+    entry_descripcion.pack(pady=5)
+
+    label_fecha = Label(tarea_window, text="Fecha de vencimiento (dd/mm/yyyy):")
+    label_fecha.pack(pady=10)
+    entry_fecha = DateEntry(tarea_window, date_pattern='dd/mm/yyyy')
+    entry_fecha.pack(pady=5)
+
+    label_prioridad = Label(tarea_window, text="Prioridad:")
+    label_prioridad.pack(pady=10)
+    entry_prioridad = Entry(tarea_window)
+    entry_prioridad.pack(pady=5)
+
+    btn_guardar = Button(tarea_window, text="Guardar Tarea", command=guardar_tarea)
+    btn_guardar.pack(pady=10)
+
+    btn_creacion_edicion = Button(root, text="Creación y Edición de Tareas", command=creacion_edicion)
+    btn_creacion_edicion.pack(pady=10)
 def foro():
     def publicar_mensaje():
         mensaje = entry.get("1.0", "end-1c")
