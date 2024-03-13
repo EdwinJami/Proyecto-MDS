@@ -44,16 +44,16 @@ def signin():
         frame = Frame(screen, width=350, height=350, bg="white")
         frame.place(x=50, y=90)
 
-        btn_tareas = Button(frame, text="Creación y edición de tareas", command=crear_tareas)
+        btn_tareas = Button(frame, text="Perfil", command=crear_tareas)
         btn_tareas.pack(pady=10)
 
-        btn_colaboracion = Button(frame, text="Colaboración y compartir", command=colaborar_compartir)
+        btn_colaboracion = Button(frame, text="Calendario", command=colaborar_compartir)
         btn_colaboracion.pack(pady=10)
 
-        btn_seguimiento = Button(frame, text="Seguimiento del proceso", command=seguimiento_proceso)
+        btn_seguimiento = Button(frame, text="Creación y edición de tareas", command=seguimiento_proceso)
         btn_seguimiento.pack(pady=10)
 
-        btn_import_export = Button(frame, text="Importar y exportar datos", command=importar_exportar)
+        btn_import_export = Button(frame, text="Foro", command=importar_exportar)
         btn_import_export.pack(pady=10)
 
     elif username != 'admin' and password != '1234':
