@@ -18,6 +18,8 @@ root.resizable(False, False)
 # Encabezado
 header = Label(root, text='Gestión de eventos escolares de la Unidad Educativa "Lev Vygotsky"', bg='#fff', fg='#333', font=('Arial', 20, 'bold'))
 header.pack(pady=20, padx=20)
+
+tareas = []
 def crear_perfil():
     # Información predeterminada del perfil
     nombre_predeterminado = "Patrick J.M"
@@ -93,9 +95,31 @@ def creacion_edicion():
         fecha_vencimiento = entry_fecha.get_date()
         prioridad = entry_prioridad.get()
 
+        tarea = {
+            'descripcion': descripcion,
+            'fecha_vencimiento': fecha_vencimiento,
+            'prioridad': prioridad
+        }
+
+        tareas.append(tarea)
+
         tarea_info = f"Descripción: {descripcion}\nFecha de vencimiento: {fecha_vencimiento.strftime('%d/%m/%Y')}\nPrioridad: {prioridad}"
         messagebox.showinfo("Tarea Guardada", tarea_info)
 
+    def ver_tareas():
+        tareas_info = ""
+        for tarea in tareas:
+            tarea_info = f"Descripción: {tarea['descripcion']}\nFecha de vencimiento: {tarea['fecha_vencimiento'].strftime('%d/%m/%Y')}\nPrioridad: {tarea['prioridad']}\n\n"
+            tareas_info += tarea_info
+
+        tareas_window = Toplevel(root)
+        tareas_window.title("Tareas Enlistadas")
+        tareas_window.geometry('400x300')
+
+        label_tareas = Label(tareas_window, text=tareas_info)
+        label_tareas.pack(pady=10)
+
+    # Crear ventana de creación y edición de tareas
     tarea_window = Toplevel(root)
     tarea_window.title("Creación y Edición de Tareas")
     tarea_window.geometry('400x300')
@@ -115,11 +139,15 @@ def creacion_edicion():
     entry_prioridad = Entry(tarea_window)
     entry_prioridad.pack(pady=5)
 
-    btn_guardar = Button(tarea_window, text="Guardar Tarea", command=guardar_tarea)
-    btn_guardar.pack(pady=10)
+    # Crear un Frame para contener los botones y centrarlos en la misma línea
+    button_frame = Frame(tarea_window)
+    button_frame.pack(pady=10)
 
-    btn_creacion_edicion = Button(root, text="Creación y Edición de Tareas", command=creacion_edicion)
-    btn_creacion_edicion.pack(pady=10)
+    btn_guardar = Button(button_frame, text="Guardar Tarea", command=guardar_tarea)
+    btn_guardar.pack(side=LEFT, padx=10)  # Alinear el botón a la izquierda
+
+    btn_ver_tareas = Button(button_frame, text="Ver Tareas", command=ver_tareas)
+    btn_ver_tareas.pack(side=LEFT, padx=10)  # Alinear el botón a la izquierda
 def foro():
     def publicar_mensaje():
         mensaje = entry.get("1.0", "end-1c")
